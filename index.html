@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Faces Studio | Handcrafted Animal Masks & Wearable Art</title>
+    <meta name="description" content="Transform into your spirit animal with handcrafted custom animal masks. Wearable art for cosplay, conventions, theater, and beyond.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cosmic-deep: #2D2A6E;
+            --cosmic-mid: #4A3F9F;
+            --nebula-pink: #E891B9;
+            --nebula-magenta: #C76DAE;
+            --ethereal-blue: #7EB6FF;
+            --ethereal-cyan: #A8E6FF;
+            --stardust-gold: #D4AF37;
+            --stardust-light: #F0E6A8;
+            --pure-white: #FFFFFF;
+            --soft-cream: #FFF9F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--cosmic-deep);
+            color: var(--pure-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, 
+                var(--cosmic-deep) 0%, 
+                #3D2A8E 25%,
+                var(--cosmic-mid) 50%,
+                #5A4FAF 75%,
+                var(--cosmic-deep) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: var(--stardust-gold);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(45, 42, 110, 0.95), transparent);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--pure-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo span {
+            background: linear-gradient(135deg, var(--ethereal-cyan), var(--nebula-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--nebula-pink), var(--ethereal-cyan));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--ethereal-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-logo {
+            width: min(400px, 80vw);
+            height: auto;
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(126, 182, 255, 0.4));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--pure-white) 0%, var(--ethereal-cyan) 50%, var(--nebula-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--stardust-light);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--cosmic-deep);
+            background: linear-gradient(135deg, var(--stardust-gold), var(--stardust-light));
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+        }
+
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--pure-white);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--stardust-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Current Listings (Etsy Integration) */
+        .shop-section {
+            background: linear-gradient(180deg, transparent, rgba(74, 63, 159, 0.3), transparent);
+        }
+
+        .etsy-widget-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .listing-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .listing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--nebula-pink);
+        }
+
+        .listing-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .listing-info {
+            padding: 1.25rem;
+        }
+
+        .listing-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--pure-white);
+        }
+
+        .listing-price {
+            color: var(--stardust-gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .view-shop-link {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--ethereal-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .view-shop-link:hover {
+            color: var(--nebula-pink);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: linear-gradient(180deg, transparent, rgba(199, 109, 174, 0.1), transparent);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(to top, rgba(45, 42, 110, 0.95), transparent);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            color: var(--stardust-light);
+        }
+
+        .gallery-overlay .status {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--stardust-gold);
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(180deg, transparent, rgba(126, 182, 255, 0.1), transparent);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid var(--nebula-pink);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--ethereal-cyan), var(--nebula-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            margin-bottom: 1.25rem;
+            color: var(--stardust-light);
+            line-height: 1.8;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--pure-white);
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+            color: var(--nebula-pink);
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--stardust-light);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--ethereal-cyan), var(--nebula-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pure-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--nebula-pink);
+            transform: translateY(-3px);
+        }
+
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--stardust-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--ethereal-cyan);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Loading State for Etsy */
+        .loading-skeleton {
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.05) 25%, 
+                rgba(255,255,255,0.1) 50%, 
+                rgba(255,255,255,0.05) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--pure-white);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                order: -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(45, 42, 110, 0.98);
+                padding: 1.5rem;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 8rem;
+            }
+
+            .hero-logo {
+                width: min(300px, 70vw);
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Placeholder styles for gallery items without images */
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--cosmic-mid), var(--nebula-magenta));
+            color: var(--pure-white);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .placeholder-image svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg"></div>
+    <div class="stars" id="stars"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-logo">✨ <span>Wild Faces Studio</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="logo.png" alt="Wild Faces Studio - Cosmic Cat Logo" class="hero-logo" id="heroLogo">
+        <h1>Wild Faces Studio</h1>
+        <p class="hero-tagline">Handcrafted animal masks that transform you into the creature you were always meant to be</p>
+        <a href="https://www.etsy.com/shop/WildFacesStudio" target="_blank" class="cta-button">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.125 6.953c.234 0 .47.047.703.141l-.422 1.922c-.21-.094-.445-.141-.703-.141-.703 0-1.195.375-1.477 1.125v4.5h-2.25V6.953h2.016l.14 1.031c.399-.773.985-1.031 1.993-1.031zM8.063 15.75c-1.453 0-2.625-.469-3.516-1.406l1.125-1.547c.68.656 1.406.984 2.18.984.609 0 .914-.234.914-.703 0-.352-.258-.586-.773-.703l-1.008-.234c-1.453-.328-2.18-1.125-2.18-2.391 0-.867.305-1.547.914-2.039.61-.492 1.414-.738 2.414-.738 1.219 0 2.266.398 3.141 1.195l-1.078 1.453c-.586-.516-1.219-.773-1.898-.773-.539 0-.809.211-.809.633 0 .328.234.547.703.656l1.031.234c1.5.352 2.25 1.148 2.25 2.391 0 .914-.328 1.633-.984 2.156-.656.524-1.531.786-2.625.786z"/>
+            </svg>
+            Visit Our Etsy Shop
+        </a>
+    </section>
+
+    <!-- Current Listings Section -->
+    <section class="shop-section" id="shop">
+        <h2 class="section-title">✨ Currently Available ✨</h2>
+        <p class="section-subtitle">Each mask is a one-of-a-kind creation, handcrafted with love and magic</p>
+        
+        <div class="etsy-widget-container">
+            <div class="listings-grid" id="listingsGrid">
+                <!-- Listings will be loaded dynamically via Etsy API -->
+                <!-- Fallback content shown when API not configured -->
+                <div class="listing-card" style="display: none;" id="loadingPlaceholder">
+                    <div class="loading-skeleton" style="aspect-ratio: 1;"></div>
+                    <div class="listing-info">
+                        <div class="loading-skeleton" style="height: 20px; margin-bottom: 8px;"></div>
+                        <div class="loading-skeleton" style="height: 24px; width: 60%;"></div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.etsy.com/shop/WildFacesStudio" target="_blank" class="view-shop-link">
+                View all items on Etsy →
+            </a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">🎭 Previous Creations 🎭</h2>
+        <p class="section-subtitle">A glimpse into the magical creatures that have found their forever homes</p>
+        
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery items will be populated from galleryData.js -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="about-photo.jpg" alt="The artist at work" id="aboutImage">
+            </div>
+            <div class="about-text">
+                <h2>Meet the Artist</h2>
+                <p>Welcome to Wild Faces Studio, where imagination takes form and spirit animals come to life. Each mask is lovingly handcrafted, painted, and detailed to capture not just an animal's appearance, but its very essence.</p>
+                <p>What started as a creative passion has blossomed into wearable art that helps people transform, express themselves, and connect with their wild side. Whether you're heading to a convention, performing on stage, or simply embracing your inner creature, there's a Wild Face waiting for you.</p>
+                <p>Every mask tells a story. What's yours?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <h2 class="section-title">💫 Frequently Asked Questions 💫</h2>
+        <p class="section-subtitle">Everything you need to know about your transformation</p>
+        
+        <div class="faq-section">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>What materials are your masks made from?</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Each mask is crafted from high-quality, lightweight materials designed for comfort during extended wear. The base is sculpted and painted by hand, with faux fur accents and mesh eye openings for visibility. Specific materials may vary by design to achieve the perfect look and feel for each creature.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Do you take custom orders?</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! We love bringing unique visions to life. Please message us through our Etsy shop to discuss your custom creation. Share your ideas, reference images, and any specific requirements. Custom orders typically take 2-4 weeks depending on complexity.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>How do I care for my mask?</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Store your mask in a cool, dry place away from direct sunlight to preserve the colors and materials. Spot clean gently with a damp cloth if needed. Avoid submerging in water or using harsh chemicals. With proper care, your mask will stay magical for years to come!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>What's your shipping policy?</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>All orders ship from the United States. Domestic shipping typically takes 3-7 business days. International shipping is available to select countries and may take 2-4 weeks. Each mask is carefully packaged to ensure it arrives safely to its new home.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can masks be worn for extended periods?</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely! Our masks are designed with comfort in mind for conventions, performances, and events. The lightweight construction and mesh eye openings allow for extended wear. We recommend taking breaks in warm environments and staying hydrated during use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Wild Faces Studio</div>
+        
+        <div class="social-links">
+            <a href="https://www.etsy.com/shop/WildFacesStudio" target="_blank" aria-label="Etsy Shop">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.125 6.953c.234 0 .47.047.703.141l-.422 1.922c-.21-.094-.445-.141-.703-.141-.703 0-1.195.375-1.477 1.125v4.5h-2.25V6.953h2.016l.14 1.031c.399-.773.985-1.031 1.993-1.031zM8.063 15.75c-1.453 0-2.625-.469-3.516-1.406l1.125-1.547c.68.656 1.406.984 2.18.984.609 0 .914-.234.914-.703 0-.352-.258-.586-.773-.703l-1.008-.234c-1.453-.328-2.18-1.125-2.18-2.391 0-.867.305-1.547.914-2.039.61-.492 1.414-.738 2.414-.738 1.219 0 2.266.398 3.141 1.195l-1.078 1.453c-.586-.516-1.219-.773-1.898-.773-.539 0-.809.211-.809.633 0 .328.234.547.703.656l1.031.234c1.5.352 2.25 1.148 2.25 2.391 0 .914-.328 1.633-.984 2.156-.656.524-1.531.786-2.625.786z"/>
+                </svg>
+            </a>
+            <a href="https://www.youtube.com/@WildFacesStudio" target="_blank" aria-label="YouTube Channel" id="youtubeLink">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="footer-links">
+            <a href="https://www.etsy.com/shop/WildFacesStudio" target="_blank">Shop on Etsy</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://www.etsy.com/shop/WildFacesStudio#policies" target="_blank">Shipping & Policies</a>
+        </div>
+        
+        <p class="copyright">© <span id="currentYear"></span> Wild Faces Studio. All rights reserved. Handcrafted with ✨ magic ✨</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Generate stars
+        function generateStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 100;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // FAQ accordion
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle clicked
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize stars
+        generateStars();
+
+        // ============================================
+        // ETSY API INTEGRATION
+        // ============================================
+        // To enable live Etsy listings, you'll need to:
+        // 1. Get an Etsy API key from https://www.etsy.com/developers/
+        // 2. Update the ETSY_API_KEY and SHOP_ID below
+        // 3. Host this through a backend or use a serverless function
+        //    (Etsy API requires server-side calls for security)
+        
+        const ETSY_CONFIG = {
+            // Replace with your actual Etsy API key and shop ID
+            API_KEY: '', // Your Etsy API key
+            SHOP_ID: 'WildFacesStudio',
+            // Set to true once API is configured
+            ENABLED: false
+        };
+
+        async function loadEtsyListings() {
+            const grid = document.getElementById('listingsGrid');
+            
+            if (!ETSY_CONFIG.ENABLED || !ETSY_CONFIG.API_KEY) {
+                // Show fallback message when API not configured
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                        <p style="color: var(--stardust-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                            ✨ Visit our Etsy shop to see all current listings ✨
+                        </p>
+                        <a href="https://www.etsy.com/shop/WildFacesStudio" target="_blank" class="cta-button" style="display: inline-flex;">
+                            Browse Available Masks
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                // Note: This would need to be called from a backend service
+                // Etsy API v3 requires OAuth and server-side requests
+                const response = await fetch(`/api/etsy-listings`);
+                const data = await response.json();
+                
+                if (data.results && data.results.length > 0) {
+                    grid.innerHTML = data.results.map(listing => `
+                        <a href="${listing.url}" target="_blank" class="listing-card">
+                            <img src="${listing.images[0]?.url_570xN || ''}" 
+                                 alt="${listing.title}" 
+                                 class="listing-image">
+                            <div class="listing-info">
+                                <h3 class="listing-title">${listing.title}</h3>
+                                <p class="listing-price">$${(listing.price.amount / listing.price.divisor).toFixed(2)}</p>
+                            </div>
+                        </a>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading Etsy listings:', error);
+            }
+        }
+
+        // ============================================
+        // GALLERY DATA
+        // ============================================
+        // Update this array with your past creations
+        // Each item needs: title, description, image (filename), status
+        
+        const galleryData = [
+            {
+                title: "Cosmic Black Cat",
+                description: "Starlit whiskers and galaxy eyes",
+                image: "gallery/cosmic-black-cat.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Fantasy Wildcat",
+                description: "Spotted spirit of the highlands",
+                image: "gallery/fantasy-wildcat.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Ice Feline",
+                description: "Frost-kissed with ancient runes",
+                image: "gallery/ice-feline.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Mystic Snow Leopard",
+                description: "Piercing aqua gaze of the peaks",
+                image: "gallery/mystic-snow-leopard.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Mystic Wolf",
+                description: "Wild spirit with knowing eyes",
+                image: "gallery/mystic-wolf.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Mystical Silver Cat",
+                description: "Fierce guardian with golden stare",
+                image: "gallery/mystical-silver-cat.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Mystical Wildcat",
+                description: "Sage-eyed hunter of twilight",
+                image: "gallery/mystical-wildcat.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Winter Wolf",
+                description: "Silent sentinel of snowy realms",
+                image: "gallery/winter-wolf.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Arctic Fox",
+                description: "Whispered secrets of the tundra",
+                image: "gallery/arctic-fox.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Desert Cat",
+                description: "Sun-kissed wanderer of dunes",
+                image: "gallery/desert-cat.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Orange Fox",
+                description: "Flame-touched trickster spirit",
+                image: "gallery/orange-fox.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Purple Snow Leopard",
+                description: "Twilight hunter of mountain dreams",
+                image: "gallery/purple-snow-leopard.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Rustic Fox",
+                description: "Woodland wanderer with gentle soul",
+                image: "gallery/rustic-fox.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Teal Tiger",
+                description: "Ocean-spirit with tribal markings",
+                image: "gallery/teal-tiger.jpg",
+                status: "Sold"
+            },
+            {
+                title: "Wild Lynx",
+                description: "Golden-eyed forest phantom",
+                image: "gallery/wild-lynx.jpg",
+                status: "Sold"
+            }
+        ];
+
+        function loadGallery() {
+            const grid = document.getElementById('galleryGrid');
+            
+            grid.innerHTML = galleryData.map(item => `
+                <div class="gallery-item">
+                    <img src="${item.image}" 
+                         alt="${item.title}" 
+                         onerror="this.parentElement.innerHTML = createPlaceholder('${item.title}')">
+                    <div class="gallery-overlay">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                        <span class="status">${item.status}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function createPlaceholder(title) {
+            return `
+                <div class="placeholder-image">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" 
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" 
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    ${title}
+                </div>
+                <div class="gallery-overlay">
+                    <h3>${title}</h3>
+                    <span class="status">Sold</span>
+                </div>
+            `;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadEtsyListings();
+            loadGallery();
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
