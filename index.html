@@ -915,60 +915,97 @@
         // ============================================
         // ETSY API INTEGRATION
         // ============================================
-        // To enable live Etsy listings, you'll need to:
-        // 1. Get an Etsy API key from https://www.etsy.com/developers/
-        // 2. Update the ETSY_API_KEY and SHOP_ID below
-        // 3. Host this through a backend or use a serverless function
-        //    (Etsy API requires server-side calls for security)
+        // This uses a Netlify serverless function to fetch listings
+        // Set ETSY_API_KEY in your Netlify environment variables
         
         const ETSY_CONFIG = {
-            // Replace with your actual Etsy API key and shop ID
-            API_KEY: '', // Your Etsy API key
             SHOP_ID: 'WildFacesStudio',
-            // Set to true once API is configured
-            ENABLED: false
+            // Set to true once you've added ETSY_API_KEY to Netlify
+            ENABLED: true
         };
 
         async function loadEtsyListings() {
             const grid = document.getElementById('listingsGrid');
             
-            if (!ETSY_CONFIG.ENABLED || !ETSY_CONFIG.API_KEY) {
-                // Show fallback message when API not configured
-                grid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                        <p style="color: var(--stardust-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
-                            ✨ Visit our Etsy shop to see all current listings ✨
-                        </p>
-                        <a href="https://www.etsy.com/shop/WildFacesStudio" target="_blank" class="cta-button" style="display: inline-flex;">
-                            Browse Available Masks
-                        </a>
-                    </div>
-                `;
+            if (!ETSY_CONFIG.ENABLED) {
+                showEtsyFallback(grid);
                 return;
             }
 
+            // Show loading state
+            grid.innerHTML = `
+                <div class="listing-card">
+                    <div class="loading-skeleton" style="aspect-ratio: 1;"></div>
+                    <div class="listing-info">
+                        <div class="loading-skeleton" style="height: 20px; margin-bottom: 8px;"></div>
+                        <div class="loading-skeleton" style="height: 24px; width: 60%;"></div>
+                    </div>
+                </div>
+            `.repeat(3);
+
             try {
-                // Note: This would need to be called from a backend service
-                // Etsy API v3 requires OAuth and server-side requests
-                const response = await fetch(`/api/etsy-listings`);
+                const response = await fetch('/api/etsy-listings');
                 const data = await response.json();
+                
+                if (data.error) {
+                    console.warn('Etsy API not configured:', data.message);
+                    showEtsyFallback(grid);
+                    return;
+                }
                 
                 if (data.results && data.results.length > 0) {
                     grid.innerHTML = data.results.map(listing => `
                         <a href="${listing.url}" target="_blank" class="listing-card">
                             <img src="${listing.images[0]?.url_570xN || ''}" 
                                  alt="${listing.title}" 
-                                 class="listing-image">
+                                 class="listing-image"
+                                 loading="lazy">
                             <div class="listing-info">
-                                <h3 class="listing-title">${listing.title}</h3>
+                                <h3 class="listing-title">${truncateTitle(listing.title)}</h3>
                                 <p class="listing-price">$${(listing.price.amount / listing.price.divisor).toFixed(2)}</p>
                             </div>
                         </a>
                     `).join('');
+                } else {
+                    // No active listings
+                    grid.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                            <p style="color: var(--stardust-light); font-size: 1.1rem; margin-bottom: 1rem;">
+                                ✨ All masks have found their forever homes! ✨
+                            </p>
+                            <p style="color: var(--ethereal-cyan); font-size: 1rem; margin-bottom: 1.5rem;">
+                                Check back soon for new creations, or message us about custom orders.
+                            </p>
+                            <a href="https://www.etsy.com/shop/WildFacesStudio" target="_blank" class="cta-button" style="display: inline-flex;">
+                                Visit Our Etsy Shop
+                            </a>
+                        </div>
+                    `;
                 }
             } catch (error) {
                 console.error('Error loading Etsy listings:', error);
+                showEtsyFallback(grid);
             }
+        }
+
+        function showEtsyFallback(grid) {
+            grid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                    <p style="color: var(--stardust-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                        ✨ Visit our Etsy shop to see all current listings ✨
+                    </p>
+                    <a href="https://www.etsy.com/shop/WildFacesStudio" target="_blank" class="cta-button" style="display: inline-flex;">
+                        Browse Available Masks
+                    </a>
+                </div>
+            `;
+        }
+
+        function truncateTitle(title) {
+            // Truncate long Etsy titles for cleaner display
+            const maxLength = 50;
+            if (title.length <= maxLength) return title;
+            return title.substring(0, maxLength).trim() + '...';
         }
 
         // ============================================
